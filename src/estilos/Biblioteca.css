@@ -1,0 +1,19 @@
+.contenedor-admin{
+    background-color: #666;
+    padding: 15px;
+    margin: 25px;
+    border-radius: 15px;
+    padding-right: 10px;
+}
+.tabla-libros th{
+    background-color: rgba(30, 143, 255, 0.805);
+    color: white;
+}
+.tabla-libros td{
+    background-color: #fff;
+    font: bold;
+}
+
+.boton-conteiner{
+    margin-left: 40%;
+}

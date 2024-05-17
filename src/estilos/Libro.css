@@ -1,0 +1,11 @@
+.tarjeta{
+    background-color: white;
+    height: 40%;
+    width: 30%;
+    padding: 20px;
+}
+.libro{
+    background-color: brown;
+    height: 40%;
+    width: 40%;
+}

@@ -1,0 +1,76 @@
+
+*{
+
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body{
+    background-color: #222;
+}
+.navbar{
+    background-color: rgba(30, 144, 255, 1);
+    
+}
+.navBar_link{
+    display:inline-block ;
+    margin: 15px;
+    width: 15%;
+}
+
+.navBar_link{
+    color: rgba(255, 255, 255, 0.601);
+    text-decoration: none;
+    font-size: 25px;
+    
+   
+}
+.navbar ul :hover{
+    color: white;
+    font-size: 30px;
+    transition: all 0.2s;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+label{
+    font: bold;
+    color: white;
+    font-size: 30px;
+    margin-left: 10px;
+    margin-right: 50px;
+}
+h1{
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.button-default{
+    height: 50px;
+    width: 160px;
+    background-color: rgba(30, 143, 255, 0.805);
+    color: rgba(255, 255, 255, 0.759);
+    margin: 10px;
+    font-size: 16px;
+}
+.button-default:hover{
+    background-color: rgba(18, 103, 187, 0.805);
+    color: white;
+}
+.contenedor-botones{
+margin-left: 40%;
+}
+.opt-buttons  {
+background-color: rgba(240, 255, 255, 0.611);
+float: right;
+margin-right: 30px;
+border-radius: 15px;
+padding: 20px;
+
+}
+.opt-buttons button{
+    display: block;
+}
+.contenedor-tabla{
+    margin:50px;
+    margin-left: 80px;
+}
