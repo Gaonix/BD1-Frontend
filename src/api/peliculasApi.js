@@ -1,6 +1,6 @@
 import axios from 'axios'
-export const obtenerPeliculas=()=>{
-    return axios.get('http://localhost:8000/productos/api/productos/peliculas/')
+export const obtenerPeliculas = (page) => {
+    return axios.get(`http://localhost:8000/productos/api/productos/peliculas/?page=${page}`);
 }
 export const crearPelicula=(pelicula)=>{
     return axios.post('http://localhost:8000/productos/api/productos/peliculas/',pelicula)
