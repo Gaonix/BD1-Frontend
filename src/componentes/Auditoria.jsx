@@ -19,29 +19,35 @@ export function Auditoria() {
     useEffect(() => {
         async function obtenerInfo() {
             const res = await ObtenerEmpleadoInformacionPersonal();
-            console.log(res.data);
+            console.log(res.data.results);
             setinfoempleados(res.data);
-            async function obtenernov (){
-            const res=  await obtenerNovedades();
-               setNovedades(res.data)
-               
-            }
-            obtenernov();
         }
+        
+        async function obtenerE() {
+            const res = await ObtenerEmpleado();
+            console.log(res.data.results);
+            setempleados(res.data.results);
+        }
+        
+        async function obtenerN() {
+            const res = await ObtenerNomina();
+            console.log(res.data.results);
+            setnomina(res.data.results);
+        }
+        
+        async function obtenerNov() {
+            const res = await obtenerNovedades();
+            console.log(res.data.results);
+            setNovedades(res.data.results);
+        }
+    
         obtenerInfo();
-        async function obtenerE(){
-            const res=await ObtenerEmpleado();
-            setempleados(res.data);
-        }
         obtenerE();
-        async function obtenerN(){
-            const res=await ObtenerNomina();
-            setnomina(res.data)
-        }
         obtenerN();
-       
-        setElemento(1)
+        obtenerNov();
+        setElemento(1);
     }, []);
+    
 
     return (
         <>
@@ -56,10 +62,10 @@ export function Auditoria() {
                 <button className="button-default"onClick={()=>setElemento(5)}>Busqueda por facultades</button>
             </div>
             {carga ? (
-                <>
+                <>{elemento==0&&<></>}
                     {elemento === 1 && (
                         <>
-                        <h1>Info-empleados :{infoempleados.length}</h1>
+                        
                             <div className="contenedor-botones">
                                 <button className="button-default" onClick={() => navegador(`/formulario-Empleado/`)}>
                                     Agregar Empleado
@@ -93,7 +99,7 @@ export function Auditoria() {
                     )}
                     {elemento===2&&(
                     <>
-                    <h1>Empleados:{empleados.length}</h1>
+                    
                         <div className="contenedor-botones">
                             <button className="button-default" onClick={() => navegador(`/formulario-Empleado/`)}>
                                 Agregar Empleado
@@ -126,7 +132,7 @@ export function Auditoria() {
                     )}
                     {elemento===3&&(
                     <>
-                    <h1>Nomina:{nomina.length}</h1>
+                    
                         <div className="contenedor-botones">
                             <button className="button-default" onClick={() => navegador(`/formulario-Empleado/`)}>
                                 Agregar Empleado
@@ -162,7 +168,7 @@ export function Auditoria() {
                     {elemento==4&&(
                         
                          <div className="contenedor-tabla">
-                            <h1>Novedades: {novedades.length}</h1>
+                            
                               <table>
                                   <thead>
                                       <tr className="empleado-card">
