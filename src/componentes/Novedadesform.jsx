@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
-import { CrearNovedades ,ObtenerEmpleado, CrearNomina} from "../api/EmpleadosApi";
+import { CrearNovedades ,ObtenerEmpleado} from "../api/EmpleadosApi";
 import { useEffect, useState } from "react";
 export function Novedadesform(){
     const navegacion = useNavigate();
@@ -14,7 +14,7 @@ export function Novedadesform(){
     useEffect(()=>{
         async function obtenerE(){
                 const res2=await ObtenerEmpleado();
-                setempleados(res2.data);
+                setempleados(res2.data.results);
                 console.log(res2.data)
         }
         obtenerE();
@@ -43,7 +43,7 @@ export function Novedadesform(){
                     {errors.Descripcion && <span>¡La DESCRIPCION ES OBLIGATORIO!</span>}
                 </div>
             <div className="pregunta">
-                        <label htmlFor="Fecha" className='etiqueta'>Nombre:</label>
+                        <label htmlFor="Fecha" className='etiqueta'>Fecha:</label>
                         <input
                             type="date"
                             id="Fecha"
@@ -62,10 +62,11 @@ export function Novedadesform(){
                </select>
                 {errors.Empleado&&<span>la Empleado es nesesaria</span>}
         </div>
-                    <button>Agregar</button>
+                    <button className="button-default">Agregar</button>
 
 
     </form>
+    <button className="button-default">Regresar</button>
      
     </>
 }

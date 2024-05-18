@@ -36,3 +36,6 @@ export const obtenerNovedades=()=> {
 export const CrearNovedades=(nov)=> {
     return axios.post('http://127.0.0.1:8000/empleados/api/empleados/novedades/',nov)
  }
+export const EliminarNovedades=(id)=>{
+    return axios.delete(`http://127.0.0.1:8000/empleados/api/empleados/novedades/${id}`)
+}

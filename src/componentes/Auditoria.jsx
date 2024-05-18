@@ -7,6 +7,7 @@ import '../estilos/Empleado.css';
 import { Emp } from "./Emp";
 import { Nom } from "./Nom";
 import { Novedades } from "./Novedades";
+import Charts from "./Charts";
 
 export function Auditoria() {
     const [carga, setCarga] = useState(true);
@@ -19,7 +20,7 @@ export function Auditoria() {
     useEffect(() => {
         async function obtenerInfo() {
             const res = await ObtenerEmpleadoInformacionPersonal();
-            console.log(res.data.results);
+            console.log(res.data);
             setinfoempleados(res.data);
         }
         
@@ -61,30 +62,39 @@ export function Auditoria() {
                 <button className="button-default" onClick={() => setElemento(4)}>Novedades</button>
                 <button className="button-default"onClick={()=>setElemento(5)}>Busqueda por facultades</button>
             </div>
-            {carga ? (
-                <>{elemento==0&&<></>}
-                    {elemento === 1 && (
-                        <>
-                        
-                            <div className="contenedor-botones">
+            
+            <div className="contenedor-botones">
                                 <button className="button-default" onClick={() => navegador(`/formulario-Empleado/`)}>
                                     Agregar Empleado
                                 </button>
                                 <button className="button-default" onClick={() => navegador(`/nomina-form/`)}>
                                     Agregar nómina
                                 </button>
+                                <button className="button-default" onClick={() => navegador(`/form-novedad`)}>
+                                    Agregar Novedad
+                                </button>
+                                
                             </div>
+            {carga ? (
+                <>{elemento==0&&<></>}
+                    {elemento === 1 && (
+                        <>
+                        
                             <div className="contedor-tabla">
                                 <table>
                                     <thead>
                                         <tr className="empleado-card">
                                             <th>Id</th>
+                                            <th>Nombre</th>
+                                            <th>apellido</th>
                                             <th>Departamento</th>
                                             <th>Cargo</th>
                                             <th>Fecha de ingreso</th>
                                             <th>Eps</th>
                                             <th>Pensión</th>
                                             <th>Sueldo</th>
+                                            <th>novedad</th>
+                                            <th>fecha_novedad</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -99,15 +109,7 @@ export function Auditoria() {
                     )}
                     {elemento===2&&(
                     <>
-                    
-                        <div className="contenedor-botones">
-                            <button className="button-default" onClick={() => navegador(`/formulario-Empleado/`)}>
-                                Agregar Empleado
-                            </button>
-                            <button className="button-default" onClick={() => navegador(`/nomina-form/`)}>
-                                Agregar nómina
-                            </button>
-                        </div>
+
                         <div className="contedor-tabla">
                             <table>
                                 <thead>
@@ -132,15 +134,7 @@ export function Auditoria() {
                     )}
                     {elemento===3&&(
                     <>
-                    
-                        <div className="contenedor-botones">
-                            <button className="button-default" onClick={() => navegador(`/formulario-Empleado/`)}>
-                                Agregar Empleado
-                            </button>
-                            <button className="button-default" onClick={() => navegador(`/nomina-form/`)}>
-                                Agregar nómina
-                            </button>
-                        </div>
+
                         <div className="contedor-tabla">
                             <table>
                                 <thead>
@@ -176,6 +170,8 @@ export function Auditoria() {
                                           <th>Descripción</th>
                                           <th>Fecha</th>
                                           <th>Empleado ID</th>
+                                          <th>acciones</th>
+
                                       </tr>
                                   </thead>
                               <tbody>
@@ -185,7 +181,9 @@ export function Auditoria() {
                               </tbody>
                             </table>
                          </div>
-                    )}
+                    )}{elemento==5&&
+                     <></>
+                    }
                 </>
             ) : (
                 <h1>Cargando...</h1>

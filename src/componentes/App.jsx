@@ -11,6 +11,8 @@ import { Libroform } from "./Libroform";
 import '../estilos/style.css'
 import { FormNomina } from "./FormNomina";
 import { Generos } from "./Generos";
+import { Estadisticas } from "./Estadisticas";
+import { Novedadesform } from "./Novedadesform";
 export function App(){
     return<> 
             <BrowserRouter>
@@ -22,8 +24,10 @@ export function App(){
                     <Route path="/formulario" element={<Peliculaform></Peliculaform>}></Route>
                     <Route path="/formulario-Empleado/" element={<Empleadoform></Empleadoform>}></Route>
                     <Route path="/formulario-libro"element={<Libroform></Libroform>}></Route>
+                    <Route path="/form-novedad" element={<Novedadesform></Novedadesform>}></Route>
                     <Route path="/nomina-form/" element={<FormNomina></FormNomina>}></Route>
                     <Route path="/formulario-genero" element={<Generos></Generos>}></Route>
+                    <Route path="/Estadisticas" element={<Estadisticas></Estadisticas>}></Route>
                 </Routes>
             </BrowserRouter>
             

@@ -1,0 +1,16 @@
+.contenedor-graficos{
+    border-radius: 15px;
+    background: #ffffff92;
+    margin-left: 40px;
+    padding: 20px;
+}
+.contenedor-graficos h2{
+    color: white;
+}
+.botton-conteiner{
+    margin: 20px;
+    margin-left: 40%;
+}
+.botton-conteiner button{
+    margin-left: 50px;
+}

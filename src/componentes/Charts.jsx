@@ -12,7 +12,7 @@ import {
 } from 'chart.js';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-
+import '../estilos/graficos.css'
 // Registrar los componentes de Chart.js necesarios
 ChartJS.register(
   CategoryScale,
@@ -23,7 +23,7 @@ ChartJS.register(
   Legend
 );
 
-const Charts = () => {
+const Charts = ({data}) => {
   const [dataPorCargo, setDataPorCargo] = useState(null);
   const [dataPorDependencia, setDataPorDependencia] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -72,8 +72,8 @@ const Charts = () => {
       {
         label: 'Cantidad',
         data: dataPorCargo.map(item => item.cantidad),
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192)',
+        borderColor: 'rgba(0,0,0)',
         borderWidth: 1,
       },
     ],
@@ -85,8 +85,8 @@ const Charts = () => {
       {
         label: 'Cantidad',
         data: dataPorDependencia.map(item => item.cantidad),
-        backgroundColor: 'rgba(153, 102, 255, 0.2)',
-        borderColor: 'rgba(153, 102, 255, 1)',
+        backgroundColor: 'rgba(153, 102, 255)',
+        borderColor: 'rgba(0,0,0',
         borderWidth: 1,
       },
     ],
@@ -94,22 +94,34 @@ const Charts = () => {
 
   return (
     <div>
-      <h2>Gráfico por Cargo</h2>
+    {data==1&&(
+        <>
+        <div className='contenedor-graficos'>
+        <h2>Gráfico por Cargo</h2> 
       <div style={{ width: '600px', height: '400px' }}>
         <div ref={chartRef1}>
           <Bar data={dataCargo} />
         </div>
-        <button onClick={() => exportToPDF(chartRef1)}>Exportar a PDF</button>
+        <br />
+        <button className="button-default" onClick={() => exportToPDF(chartRef1)}>Exportar a PDF</button>
       </div>
+    </div>
+      </>
+)}{data==2&&(<>
 
+       
+    <div className='contenedor-graficos'>
       <h2>Gráfico por Dependencia</h2>
       <div style={{ width: '800px', height: '400px' }}>
         <div ref={chartRef2}>
           <Bar data={dataDependencia} />
         </div>
-        <button onClick={() => exportToPDF(chartRef2)}>Exportar a PDF</button>
+        <br />
+        <button  className="button-default" onClick={() => exportToPDF(chartRef2)}>Exportar a PDF</button>
       </div>
     </div>
+</>)}{data==3&&(<></>)}
+</div>
   );
 };
 

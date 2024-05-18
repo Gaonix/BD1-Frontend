@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Navegacion } from "./Navegacion";
 import { Libro } from "./Libro";
 import { useNavigate } from "react-router-dom";
+import {ObtenerLibros} from "../api/Libros"
 import '../estilos/Biblioteca.css';
 
 export function Biblioteca() {
@@ -10,20 +11,12 @@ export function Biblioteca() {
     const navegador = useNavigate();
 
     useEffect(() => {
-        fetch("src/api/books.json")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("La respuesta de red no fue exitosa");
-                }
-                return response.json();
-            })
-            .then(data => {
-                setLibros(data);
-            })
-            .catch(error => {
-                console.error("Error al cargar libros:", error);
-                // Manejar el error (por ejemplo, mostrar un mensaje de error)
-            });
+    async function SolicitarLibros(){
+        const res =await ObtenerLibros()
+        setLibros(res.data.results)
+        console.log(res.data)
+    }
+    SolicitarLibros();
     }, []);
 
     return (
@@ -31,37 +24,31 @@ export function Biblioteca() {
             <Navegacion />
             <h1>BIBLIOTECA</h1>
             <div className="boton-conteiner">
-                <button
-                    className="button-default bt1"
-                    onClick={() => setAdmin(!admin)}
-                >
-                    {admin ? "Vista Usuario" : "Vista Admin"}
-                </button>
-                {admin && (
                     <button
                         className="button-default bt1"
                         onClick={() => navegador("/formulario-libro")}
                     >
                         Agregar
                     </button>
-                )}
             </div>
-            {admin ? (
+            
                 <div className="contenedor-admin">
+                            /*<th>promedio_calificacion</th>*/
                     <table className="tabla-libros">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Título</th>
-                                <th>Autor</th>
-                                <th>Calificación</th>
-                                <th>ISBN</th>
-                                <th>ISBN13</th>
-                                <th>Idioma</th>
-                                <th># Páginas</th>
-                                <th>Recuento de Calificaciones</th>
-                                <th>Fecha Publicación</th>
-                                <th>Editorial</th>
+                            <th>id</th>
+                            <th>titulo</th>
+                            <th>isbn</th>
+                            <th>isbn13</th>
+                            <th>codigo_idioma</th>
+                            <th>numero_paginas</th>
+                            <th>fecha_publicacion</th>
+                            <th>editorial</th>
+                            <th>anio_publicacion</th>
+                            <th>calificacion</th>
+                            <th>cantidad_calificaciones</th>
+                            <th>cantidad_resenas</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -71,11 +58,7 @@ export function Biblioteca() {
                         </tbody>
                     </table>
                 </div>
-            ) : (
-                <div className="contenedor-user">
-                    {/* Contenido de vista de usuario */}
-                </div>
-            )}
+
         </>
     );
 }
