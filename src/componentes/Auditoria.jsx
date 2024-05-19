@@ -8,6 +8,7 @@ import { Emp } from "./Emp";
 import { Nom } from "./Nom";
 import { Novedades } from "./Novedades";
 import Charts from "./Charts";
+import { Ordenados } from "./Ordenados";
 
 export function Auditoria() {
     const [carga, setCarga] = useState(true);
@@ -60,7 +61,8 @@ export function Auditoria() {
                 <button className="button-default" onClick={() => setElemento(2)}>Empleados</button>
                 <button className="button-default" onClick={() => setElemento(3)}>Nomina</button>
                 <button className="button-default" onClick={() => setElemento(4)}>Novedades</button>
-                <button className="button-default"onClick={()=>setElemento(5)}>Busqueda por facultades</button>
+                <button className="button-default" onClick={() => setElemento(5)}>Ornedaminetos</button>
+                <button className="button-default"onClick={()=>setElemento(6)}>Busqueda por facultades</button>
             </div>
             
             <div className="contenedor-botones">
@@ -73,7 +75,6 @@ export function Auditoria() {
                                 <button className="button-default" onClick={() => navegador(`/form-novedad`)}>
                                     Agregar Novedad
                                 </button>
-                                
                             </div>
             {carga ? (
                 <>{elemento==0&&<></>}
@@ -182,7 +183,9 @@ export function Auditoria() {
                             </table>
                          </div>
                     )}{elemento==5&&
-                     <></>
+                     <>
+                     <Ordenados></Ordenados>
+                     </>
                     }
                 </>
             ) : (
