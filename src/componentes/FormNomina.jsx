@@ -16,19 +16,19 @@ export function FormNomina(){
     useEffect(()=>{
         async function obtenerC(){
                 const res= await ObtenerCargos();
-                setcargo(res.data)
+                setcargo(res.data.results)
                 console.log(res.data)
         }
         obtenerC();
         async function obtenerD(){
                 const res1=await ObtenerDepartamento();
-                setdepartamento(res1.data);
+                setdepartamento(res1.data.results);
                 console.log(res1.data)
         }
         obtenerD();
         async function obtenerE(){
                 const res2=await ObtenerEmpleado();
-                setempleados(res2.data);
+                setempleados(res2.data.results);
                 console.log(res2.data)
         }
         obtenerE();

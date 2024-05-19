@@ -36,11 +36,11 @@ useEffect(()=>{
     setestado(1)
 },[]);
 return<>
-<div>
-    <button onClick={()=>{setestado(1)}}>Nombre ascendente</button>
-    <button onClick={()=>{setestado(2)}}>Nombre Descendente</button>
-    <button onClick={()=>{setestado(3)}}>Eps Ascendente</button>
-    <button onClick={()=>{setestado(4)}}>Cargo Ascendente</button>
+<div className="contenedor-botones2">
+    <button onClick={()=>{setestado(1)}} className="button-default">Nombre ascendente</button>
+    <button onClick={()=>{setestado(2)}} className="button-default">Nombre Descendente</button>
+    <button onClick={()=>{setestado(3)}} className="button-default">Eps Ascendente</button>
+    <button onClick={()=>{setestado(4)}} className="button-default">Cargo Ascendente</button>
 </div>
 
     <div className="contedor-tabla">

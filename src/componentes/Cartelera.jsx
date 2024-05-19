@@ -10,6 +10,7 @@ export function Cartelera(){
     const [Admin, cambiarEstado] = useState(true);
     const [peliculas, setPeliculas] = useState([]);
     const [pagina, setPagina] = useState(1);
+    const [ultimaPagina, setUltimaPagina] = useState(1);
     const navigate = useNavigate();
     const titulo = "Vista administrador";
     const titulo2 = "Vista  usuario";
@@ -23,6 +24,7 @@ export function Cartelera(){
                     setPeliculas(res.data.results);
                     setContenido(res.data.results); 
                     console.log(res.data.results)
+                    setUltimaPagina((Math.ceil(10686 / 48)));
                 } else {
                     console.error('La respuesta de obtenerPeliculas no es un array:', res.data);
                 }
@@ -44,6 +46,7 @@ export function Cartelera(){
                 <button className="button-default bt-opc" onClick={() => cambiarEstado(!Admin)}>{Admin ? titulo : titulo2}</button>
                 <button className="button-default bt-opc" onClick={() => setPagina(pagina + 1)}>Siguiente</button>
                 <button className="button-default bt-opc" onClick={() => setPagina(pagina - 1)} disabled={pagina === 1}>Anterior</button>
+                <button className="button-default bt-opc" onClick={() => setPagina(ultimaPagina )}>ultima</button>
             </div>
 
             {Admin ? (
@@ -72,6 +75,7 @@ export function Cartelera(){
                     </table>
                 </div>
             )}
+            <p>Última página: {ultimaPagina}</p>
         </>
     );
 }
