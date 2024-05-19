@@ -62,7 +62,7 @@ export function Auditoria() {
                 <button className="button-default" onClick={() => setElemento(3)}>Nomina</button>
                 <button className="button-default" onClick={() => setElemento(4)}>Novedades</button>
                 <button className="button-default" onClick={() => setElemento(5)}>Ornedaminetos</button>
-                <button className="button-default"onClick={()=>setElemento(6)}>Busqueda por facultades</button>
+                
             </div>
             
             <div className="contenedor-botones">
