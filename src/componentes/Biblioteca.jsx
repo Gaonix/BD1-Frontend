@@ -33,7 +33,7 @@ export function Biblioteca() {
             </div>
             
                 <div className="contenedor-admin">
-                            /*<th>promedio_calificacion</th>*/
+                           
                     <table className="tabla-libros">
                         <thead>
                             <tr>
